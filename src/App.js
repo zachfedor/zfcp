@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
+import DeviceList from './DeviceList';
 import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <main className="App">
+        <h1>Zach Fedor's Citrusbyte Prototype</h1>
+
+        <DeviceList devices={['a', 'b', 'c']} />
+      </main>
     );
   }
 }
