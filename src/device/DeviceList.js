@@ -3,9 +3,10 @@ import Device from './Device';
 
 class DeviceList extends Component {
   render() {
-    const devices = this.props.devices.map(device => {
-      return <Device name={device} />
-    });
+    // const devices = this.props.devices.map(device => {
+    //   return <Device name={device} />
+    // });
+    const devices = <p>devices</p>;
 
     return (
       <section className="devicelist">

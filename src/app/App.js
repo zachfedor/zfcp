@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import DeviceList from './DeviceList';
-import logo from './logo.svg';
+import DeviceContainer from '../device/DeviceContainer';
+// import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
@@ -9,7 +9,7 @@ class App extends Component {
       <main className="App">
         <h1>Zach Fedor's Citrusbyte Prototype</h1>
 
-        <DeviceList devices={['a', 'b', 'c']} />
+        <DeviceContainer />
       </main>
     );
   }
