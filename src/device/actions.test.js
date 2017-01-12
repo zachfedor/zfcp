@@ -4,7 +4,9 @@ it('Add device action works', () => {
   expect(addDevice('test')).toEqual({
     type: 'ADD_DEVICE',
     id: 0,
-    name: 'test'
+    device: {
+      name: 'test'
+    }
   });
 });
 

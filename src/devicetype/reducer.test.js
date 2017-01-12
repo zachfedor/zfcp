@@ -9,13 +9,13 @@ it('Creates correct initial devicetype state', () => {
 });
 
 it('Adds a DeviceType', () => {
-  const action = actions.addDeviceType('new devicetype', 'http://myapi.com');
+  const action = actions.addDeviceType('new deviceType', 'http://myapi.com');
 
   expect(deviceTypeReducer(initialState, action))
     .toEqual({
       deviceTypes: [0],
       deviceTypesById: {
-        0: { name: 'new devicetype', apiUrl: 'http://myapi.com' }
+        0: { name: 'new deviceType', apiUrl: 'http://myapi.com' }
       }
     });
 });

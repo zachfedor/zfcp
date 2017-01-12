@@ -9,8 +9,10 @@ export const addDeviceType = (name, apiUrl) => {
   return {
     type: ADD_DEVICETYPE,
     id: nextDeviceTypeID++,
-    name,
-    apiUrl
+    deviceType: {
+      name,
+      apiUrl
+    }
   };
 };
 

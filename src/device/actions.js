@@ -10,7 +10,9 @@ export const addDevice = (name) => {
   return {
     type: ADD_DEVICE,
     id: nextDeviceID++,
-    name
+    device: {
+      name
+    }
   };
 };
 

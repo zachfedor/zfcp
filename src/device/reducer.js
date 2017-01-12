@@ -9,7 +9,7 @@ const device = (state = {}, action) => {
   switch (action.type) {
     case ADD_DEVICE:
       return { [action.id]: {
-        name: action.name,
+        ...action.device
       }};
     default:
       return state;

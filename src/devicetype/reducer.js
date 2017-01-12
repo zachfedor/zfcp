@@ -9,8 +9,7 @@ const deviceType = (state = {}, action) => {
   switch (action.type) {
     case ADD_DEVICETYPE:
       return { [action.id]: {
-        name: action.name,
-        apiUrl: action.apiUrl
+        ...action.deviceType
       }};
     default:
       return state;
