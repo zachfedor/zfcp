@@ -1,4 +1,4 @@
-import { addDevice, showDevice, showDeviceList } from './actions';
+import { addDevice, removeDevice, showDevice } from './actions';
 
 it('Add device action works', () => {
   expect(addDevice('test')).toEqual({
@@ -8,17 +8,17 @@ it('Add device action works', () => {
   });
 });
 
-it('Show device action works', () => {
-  expect(showDevice(0)).toEqual({
-    type: 'SHOW_DEVICE',
+it('Remove device action works', () => {
+  expect(removeDevice(0)).toEqual({
+    type: 'REMOVE_DEVICE',
     id: 0
   });
 });
 
-
-it('Show devicelist action works', () => {
-  expect(showDeviceList()).toEqual({
-    type: 'SHOW_DEVICELIST'
+it('Show device action works', () => {
+  expect(showDevice(0)).toEqual({
+    type: 'SHOW_DEVICE',
+    id: 0
   });
 });
 

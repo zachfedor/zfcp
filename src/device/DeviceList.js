@@ -3,10 +3,9 @@ import Device from './Device';
 
 class DeviceList extends Component {
   render() {
-    // const devices = this.props.devices.map(device => {
-    //   return <Device name={device} />
-    // });
-    const devices = <p>devices</p>;
+    const devices = this.props.devices.map(device => {
+      return <Device key={device.id} name={device.name} />
+    });
 
     return (
       <section className="devicelist">

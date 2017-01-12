@@ -1,16 +1,10 @@
-// Action Types for Devices
-const ADD_DEVICE      = 'ADD_DEVICE';
-const SHOW_DEVICE     = 'SHOW_DEVICE';
-const SHOW_DEVICELIST = 'SHOW_DEVICELIST';
-
-export const deviceActions = {
-  ADD_DEVICE,
-  SHOW_DEVICE,
-  SHOW_DEVICELIST
-};
+// Actions
+export const ADD_DEVICE    = 'ADD_DEVICE';
+export const REMOVE_DEVICE = 'REMOVE_DEVICE';
+export const SHOW_DEVICE   = 'SHOW_DEVICE';
 
 
-// Actions for Devices
+// Action Creators
 let nextDeviceID = 0;
 export const addDevice = (name) => {
   return {
@@ -20,15 +14,16 @@ export const addDevice = (name) => {
   };
 };
 
-export const showDevice = (id) => {
+export const removeDevice = (id) => {
   return {
-    type: SHOW_DEVICE,
-    id: id
+    type: REMOVE_DEVICE,
+    id
   };
 };
 
-export const showDeviceList = () => {
+export const showDevice = (id) => {
   return {
-    type: SHOW_DEVICELIST,
+    type: SHOW_DEVICE,
+    id
   };
 };

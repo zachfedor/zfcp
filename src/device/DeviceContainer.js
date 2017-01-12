@@ -2,18 +2,18 @@ import { connect } from 'react-redux';
 import { showDevice } from './actions';
 import DeviceList from './DeviceList';
 
-const getDevices = (devices) => {
-  // TODO:
-  // if (devices === null) {
-  //   get from localstorage
-  // }
-  return devices;
-};
 
 const mapStateToProps = (state) => {
+  const devices = state.deviceReducer.devices.map(device => {
+    return {
+      ...state.deviceReducer.devicesById[device],
+      id: device
+    }
+  });
+
   return {
-    devices: getDevices(state.devices)
-  };
+    devices
+  }
 };
 
 const mapDispatchToProps = (dispatch) => {
