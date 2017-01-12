@@ -24,6 +24,24 @@ it('Adds a Button Control', () => {
     });
 });
 
+it('Changes a Control', () => {
+  const oldState = {
+    controls: [0],
+    controlsById: {
+      0: { name: 'test', controlType: 0, value: 'old' }
+    }
+  };
+  const action = actions.changeControl(0, 'new');
+
+  expect(controlReducer(oldState, action))
+    .toEqual({
+      controls: [0],
+      controlsById: {
+        0: { name: 'test', controlType: 0, value: 'new' }
+      }
+    });
+});
+
 it('Removes a Control', () => {
   const oldState = {
     controls: [0, 1],

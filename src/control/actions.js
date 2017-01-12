@@ -1,5 +1,6 @@
 // Actions
 export const ADD_CONTROL    = 'ADD_CONTROL';
+export const CHANGE_CONTROL    = 'CHANGE_CONTROL';
 export const REMOVE_CONTROL = 'REMOVE_CONTROL';
 
 
@@ -14,6 +15,14 @@ export const addControl = (name, controlType) => {
       controlType,
       value: null
     }
+  };
+};
+
+export const changeControl = (id, value) => {
+  return {
+    type: CHANGE_CONTROL,
+    id,
+    value
   };
 };
 

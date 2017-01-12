@@ -1,4 +1,4 @@
-import { ADD_CONTROL, REMOVE_CONTROL } from './actions';
+import { ADD_CONTROL, CHANGE_CONTROL, REMOVE_CONTROL } from './actions';
 
 export const initialState = {
   controls: [],
@@ -11,6 +11,12 @@ const control = (state = {}, action) => {
       return { [action.id]: {
         ...action.control
       }};
+
+    case CHANGE_CONTROL:
+      return {
+        [action.id]: Object.assign({}, state, { value: action.value })
+      };
+
     default:
       return state;
   }
@@ -24,6 +30,15 @@ const controlReducer = (state = initialState, action) => {
         controlsById: Object.assign({},
           state.controlsById,
           control(undefined, action)
+        )
+      };
+
+    case CHANGE_CONTROL:
+      return {
+        controls: state.controls,
+        controlsById: Object.assign({},
+          state.controlsById,
+          control(state.controlsById[action.id], action)
         )
       };
 
