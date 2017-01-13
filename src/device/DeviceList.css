@@ -1,0 +1,13 @@
+.devicelist {
+  width: 90vw;
+  margin: 5vw;
+  padding: 0;
+}
+
+.devicelist ul {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid #ccc;
+  list-style-type: none;
+}

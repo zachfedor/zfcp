@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import './Device.css';
 
 class Device extends Component {
   render() {
     return (
-      <li>{this.props.name}</li>
+      <li className="device">{this.props.name}</li>
     );
   }
 }

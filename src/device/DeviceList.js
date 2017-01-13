@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Device from './Device';
+import './DeviceList.css';
 
 class DeviceList extends Component {
   render() {
@@ -12,7 +13,11 @@ class DeviceList extends Component {
         <h2>Devices</h2>
 
         <ul>
-          {devices}
+          {devices.length === 0 ? (
+            <li className="device disabled">no devices configured</li>
+          ) : (
+            {devices}
+          )}
         </ul>
       </section>
     )
