@@ -7,7 +7,8 @@ it('should render without crashing', () => {
 
   expect(component.find('h2').text()).toEqual('Devices');
   expect(component.find('ul').length).toEqual(1);
-  expect(component.find('li').length).toEqual(0);
+  expect(component.find('li').length).toEqual(1);
+  expect(component.find('li').text()).toEqual('No devices are configured');
 });
 
 it('should render a list of devices', () => {

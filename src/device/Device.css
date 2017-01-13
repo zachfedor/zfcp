@@ -6,3 +6,13 @@
 .device.disabled {
   color: #ccc;
 }
+
+.device:hover {
+  cursor: pointer;
+  background: #f3f3f3;
+}
+
+.device.disabled:hover {
+  cursor: default;
+  background: #fff;
+}

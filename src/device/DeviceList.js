@@ -13,11 +13,11 @@ class DeviceList extends Component {
         <h2>Devices</h2>
 
         <ul>
-          {devices.length === 0 ? (
-            <li className="device disabled">no devices configured</li>
-          ) : (
-            {devices}
-          )}
+          {this.props.devices.length === 0 &&
+            <li className="device disabled">No devices are configured</li>
+          }
+
+          {devices}
         </ul>
       </section>
     )
