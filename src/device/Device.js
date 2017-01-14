@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import ControlContainer from '../control/ControlContainer';
 import './Device.css';
 
 class Device extends Component {
@@ -13,12 +14,6 @@ class Device extends Component {
       subtitle = <h3>Control your {this.props.deviceTypeName} device:</h3>
     }
 
-    const controls = this.props.controls;
-    let controlElements = (<li>no controls</li>);
-    if(controls.length > 0 ) {
-      controlElements = controls.map(c => <li key={c}>control id: {c}</li>)
-    }
-
     return (
       <article className="Device">
         <a href="#" onClick={this.backToList}>&lt; Back to Device List</a>
@@ -27,9 +22,7 @@ class Device extends Component {
 
         {subtitle}
 
-        <ul>
-          {controlElements}
-        </ul>
+        <ControlContainer />
       </article>
     );
   }

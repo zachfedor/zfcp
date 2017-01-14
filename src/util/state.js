@@ -49,58 +49,58 @@ export const initialDeviceTypeState = {
 export const initialControlTypeState = {
   1: {
     name: 'Power',
-    type: 'BUTTON',
+    interface: 'BUTTON',
     endpoint: '/power'
   },
   2: {
     name: 'Volume',
-    type: 'SLIDER',
+    interface: 'SLIDER',
     values: [0, 100],
     endpoint: '/volume?val='
   },
   3: {
     name: 'Playlist',
-    type: 'SELECT',
+    interface: 'SELECT',
     values: ['wake up tunes', 'coffeeshop', 'workout playlist'],
     endpoint: '/playlist?val='
   },
   4: {
     name: 'Power',
-    type: 'BUTTON',
+    interface: 'BUTTON',
     endpoint: '/power'
   },
   5: {
     name: 'Volume',
-    type: 'SLIDER',
+    interface: 'SLIDER',
     values: [0, 100],
     endpoint: '/volume?val='
   },
   6: {
     name: 'Playlist',
-    type: 'SELECT',
+    interface: 'SELECT',
     values: ['hard rock', 'classic rock', 'jazz'],
     endpoint: '/playlist?val='
   },
   7: {
     name: 'Power',
-    type: 'BUTTON',
+    interface: 'BUTTON',
     endpoint: '/power'
   },
   8: {
     name: 'Volume',
-    type: 'SLIDER',
+    interface: 'SLIDER',
     values: [0, 100],
     endpoint: '/volume?val='
   },
   9: {
     name: 'Brightness',
-    type: 'SLIDER',
+    interface: 'SLIDER',
     values: [0, 100],
     endpoint: '/brightness?val='
   },
   10: {
     name: 'Power',
-    type: 'BUTTON',
+    interface: 'BUTTON',
     endpoint: '/power'
   }
 };
@@ -108,37 +108,37 @@ export const initialControlTypeState = {
 export const initialControlState = {
   1: {
     name: 'Bedroom TV Power',
-    type: 7,
+    controlType: 7,
     value: false
   },
   2: {
     name: 'Bedroom TV Volume',
-    type: 8,
+    controlType: 8,
     value: 50
   },
   3: {
     name: 'Bedroom TV Brightness',
-    type: 9,
+    controlType: 9,
     value: 75
   },
   4: {
     name: 'Livingroom Audio Power',
-    type: 1,
+    controlType: 1,
     value: true
   },
   5: {
     name: 'Livingroom Audio Volume',
-    type: 2,
+    controlType: 2,
     value: 33
   },
   6: {
     name: 'Livingroom Audio Playlist',
-    type: 3,
+    controlType: 3,
     value: 'coffeeshop'
   },
   7: {
     name: 'Livingroom Lights',
-    type: 10,
+    controlType: 10,
     value: true
   }
 };

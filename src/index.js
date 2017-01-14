@@ -6,9 +6,7 @@ import App from './app/App';
 import rootReducer from './reducer';
 import './index.css';
 
-// const store = createStore(reducer);
 const store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-
 
 
 ReactDOM.render(
@@ -17,3 +15,4 @@ ReactDOM.render(
   </Provider>,
   document.getElementById('root')
 );
+
