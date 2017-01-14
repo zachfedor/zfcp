@@ -1,9 +1,5 @@
 import { ADD_DEVICE, REMOVE_DEVICE, SHOW_DEVICE } from './actions';
-
-export const initialState = {
-  devices: [],
-  devicesById: {}
-};
+import { initialDeviceState } from '../util/state';
 
 const device = (state = {}, action) => {
   switch (action.type) {
@@ -16,10 +12,11 @@ const device = (state = {}, action) => {
   }
 };
 
-const deviceReducer = (state = initialState, action) => {
+const deviceReducer = (state = initialDeviceState, action) => {
   switch (action.type) {
     case ADD_DEVICE:
       return {
+        ...state,
         devices: [ ...state.devices, action.id ],
         devicesById: Object.assign({},
           state.devicesById,
@@ -32,14 +29,15 @@ const deviceReducer = (state = initialState, action) => {
       delete devicesById[action.id];
 
       return {
+        ...state,
         devices: state.devices.filter(i => i !== action.id),
         devicesById
       };
 
     case SHOW_DEVICE:
       return {
-        showingDevice: action.id,
-        ...state
+        ...state,
+        showingDevice: action.id
       };
 
     default:

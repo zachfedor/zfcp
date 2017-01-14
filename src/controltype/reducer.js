@@ -1,9 +1,6 @@
 import { ADD_CONTROLTYPE, REMOVE_CONTROLTYPE } from './actions';
+import { initialControlTypeState } from '../util/state';
 
-export const initialState = {
-  controlTypes: [],
-  controlTypesById: {}
-};
 
 const controlType = (state = {}, action) => {
   switch (action.type) {
@@ -16,29 +13,23 @@ const controlType = (state = {}, action) => {
   }
 };
 
-const controlTypeReducer = (state = initialState, action) => {
+const controlTypesById = (state = initialControlTypeState, action) => {
   switch (action.type) {
     case ADD_CONTROLTYPE:
-      return {
-        controlTypes: [ ...state.controlTypes, action.id ],
-        controlTypesById: Object.assign({},
-          state.controlTypesById,
-          controlType(undefined, action)
-        )
-      };
+      return Object.assign({},
+        state.controlTypesById,
+        controlType(undefined, action)
+      );
 
     case REMOVE_CONTROLTYPE:
       const controlTypesById = Object.assign({}, state.controlTypesById);
       delete controlTypesById[action.id];
 
-      return {
-        controlTypes: state.controlTypes.filter(i => i !== action.id),
-        controlTypesById
-      };
+      return controlTypesById;
 
     default:
       return state;
   }
 }
 
-export default controlTypeReducer;
+export default controlTypesById;

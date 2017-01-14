@@ -1,9 +1,6 @@
 import { ADD_DEVICETYPE, REMOVE_DEVICETYPE } from './actions';
+import { initialDeviceTypeState } from '../util/state';
 
-export const initialState = {
-  deviceTypes: [],
-  deviceTypesById: {}
-};
 
 const deviceType = (state = {}, action) => {
   switch (action.type) {
@@ -16,7 +13,7 @@ const deviceType = (state = {}, action) => {
   }
 };
 
-const deviceTypeReducer = (state = initialState, action) => {
+const deviceTypeReducer = (state = initialDeviceTypeState, action) => {
   switch (action.type) {
     case ADD_DEVICETYPE:
       return {

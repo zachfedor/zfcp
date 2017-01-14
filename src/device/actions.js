@@ -5,7 +5,7 @@ export const SHOW_DEVICE   = 'SHOW_DEVICE';
 
 
 // Action Creators
-let nextDeviceID = 0;
+let nextDeviceID = 4;
 export const addDevice = (name) => {
   return {
     type: ADD_DEVICE,
