@@ -1,18 +1,12 @@
-.device {
-  padding: 2vw;
-  border-bottom: 1px solid #ccc;
+.Device a, .Device a:visited {
+  color: #6070df;
+  text-decoration: none;
 }
 
-.device.disabled {
+.Device a:hover, .Device a:active {
+  color: #ff5470;
+}
+
+.Device h3 {
   color: #ccc;
-}
-
-.device:hover {
-  cursor: pointer;
-  background: #f3f3f3;
-}
-
-.device.disabled:hover {
-  cursor: default;
-  background: #fff;
 }

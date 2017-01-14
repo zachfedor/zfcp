@@ -1,13 +1,27 @@
-.devicelist {
-  width: 90vw;
-  margin: 5vw;
-  padding: 0;
-}
-
-.devicelist ul {
+.DeviceList ul {
   width: 100%;
   margin: 0;
   padding: 0;
   border-top: 1px solid #ccc;
   list-style-type: none;
 }
+
+.DeviceList ul .device {
+  padding: 2vw;
+  border-bottom: 1px solid #ccc;
+}
+
+.DeviceList ul .device.disabled {
+  color: #ccc;
+}
+
+.DeviceList ul .device:hover {
+  cursor: pointer;
+  background: #f3f3f3;
+}
+
+.DeviceList ul .device.disabled:hover {
+  cursor: default;
+  background: #fff;
+}
+

@@ -1,24 +1,38 @@
 import { connect } from 'react-redux';
 import { showDevice } from './actions';
-import DeviceList from './DeviceList';
+import DeviceDashboard from './DeviceDashboard';
 
 
 const mapStateToProps = (state) => {
-  const devices = state.deviceReducer.devices.map(device => {
+  const devices = state.deviceReducer.devices.map(id => {
     return {
-      ...state.deviceReducer.devicesById[device],
-      id: device
+      id,
+      name: state.deviceReducer.devicesById[id].name
     }
   });
 
+  const id = state.deviceReducer.showingDevice;
+  let device = null;
+  if (id !== null) {
+    const deviceObject = state.deviceReducer.devicesById[id];
+    const deviceTypeObject = state.deviceTypeReducer.deviceTypesById[deviceObject.deviceType];
+
+    device = {
+      name: deviceObject.name,
+      deviceTypeName: deviceTypeObject.name,
+      controls: deviceObject.controls
+    };
+  }
+
   return {
-    devices
+    devices,
+    device
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onDeviceClick: (id) => {
+    onShowDevice: (id) => {
       dispatch(showDevice(id));
     }
   };
@@ -27,7 +41,7 @@ const mapDispatchToProps = (dispatch) => {
 const DeviceContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(DeviceList);
+)(DeviceDashboard);
 
 export default DeviceContainer;
 

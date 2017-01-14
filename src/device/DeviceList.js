@@ -1,27 +1,38 @@
-import React, { Component } from 'react';
-import Device from './Device';
+import React, { Component, PropTypes } from 'react';
 import './DeviceList.css';
 
 class DeviceList extends Component {
   render() {
-    const devices = this.props.devices.map(device => {
-      return <Device key={device.id} name={device.name} />
-    });
+    let listElements;
+    const devices = this.props.devices;
+
+    if(devices.length === 0) {
+      listElements = <li className="device disabled">No devices are configured</li>
+    } else {
+      listElements = devices.map(device => {
+        return (
+          <li className="device" key={device.id} onClick={() => { this.props.onShowDevice(device.id); }}>
+            {device.name}
+          </li>
+        );
+      });
+    }
 
     return (
-      <section className="devicelist">
+      <article className="DeviceList">
         <h2>Devices</h2>
 
         <ul>
-          {this.props.devices.length === 0 &&
-            <li className="device disabled">No devices are configured</li>
-          }
-
-          {devices}
+          {listElements}
         </ul>
-      </section>
-    )
+      </article>
+    );
   }
+}
+
+DeviceList.propTypes = {
+  devices: PropTypes.array.isRequired,
+  onShowDevice: PropTypes.func
 }
 
 export default DeviceList;
