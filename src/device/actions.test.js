@@ -3,7 +3,7 @@ import { addDevice, removeDevice, showDevice } from './actions';
 it('Add device action works', () => {
   expect(addDevice('test')).toEqual({
     type: 'ADD_DEVICE',
-    id: 0,
+    id: 4,
     device: {
       name: 'test'
     }

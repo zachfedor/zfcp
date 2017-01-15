@@ -17,12 +17,12 @@ const controlTypesById = (state = initialControlTypeState, action) => {
   switch (action.type) {
     case ADD_CONTROLTYPE:
       return Object.assign({},
-        state.controlTypesById,
+        state,
         controlType(undefined, action)
       );
 
     case REMOVE_CONTROLTYPE:
-      const controlTypesById = Object.assign({}, state.controlTypesById);
+      const controlTypesById = Object.assign({}, state);
       delete controlTypesById[action.id];
 
       return controlTypesById;

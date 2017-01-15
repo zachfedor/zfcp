@@ -1,43 +1,38 @@
-import controlTypeReducer, { initialState } from './reducer';
+import controlTypeReducer from './reducer';
 import * as actions from './actions';
+import { initialControlTypeState } from '../util/state';
+
+const countProps = Object.getOwnPropertyNames;
 
 it('Creates correct initial controlType state', () => {
   const action = { type: 'default' };
 
   expect(controlTypeReducer(undefined, action))
-    .toEqual(initialState);
+    .toEqual(initialControlTypeState);
 });
 
 it('Adds a Button ControlType', () => {
-  const action = actions.addControlType('new controlType', 'BUTTON', '/endpoint');
+  expect(countProps(initialControlTypeState).length).toEqual(10);
 
-  expect(controlTypeReducer(initialState, action))
+  const action = actions.addControlType('new controlType', 'BUTTON', '/endpoint');
+  const newState = controlTypeReducer(initialControlTypeState, action);
+
+  expect(countProps(newState).length).toEqual(11);
+  expect(newState[11])
     .toEqual({
-      controlTypes: [0],
-      controlTypesById: {
-        0: {
-          name: 'new controlType',
-          type: 'BUTTON',
-          endpoint: '/endpoint'
-        }
-      }
+      name: 'new controlType',
+      type: 'BUTTON',
+      endpoint: '/endpoint'
     });
 });
 
 it('Removes a ControlType', () => {
-  const oldState = {
-    controlTypes: [0, 1],
-    controlTypesById: {
-      0: { name: 'zero' },
-      1: { name: 'one' }
-    }
-  };
-  const action = actions.removeControlType(0);
+  expect(countProps(initialControlTypeState).length).toEqual(10);
 
-  expect(controlTypeReducer(oldState, action))
-    .toEqual({
-      controlTypes: [1],
-      controlTypesById: { 1: { name: 'one' }}
-    });
+  const action = actions.removeControlType(1);
+  const newState = controlTypeReducer(initialControlTypeState, action);
+
+  expect(countProps(newState).length).toEqual(9);
+  expect(newState[1]).toEqual(undefined);
 });
 

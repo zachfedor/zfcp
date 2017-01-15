@@ -4,7 +4,7 @@ export const REMOVE_CONTROLTYPE = 'REMOVE_CONTROLTYPE';
 
 
 // Action Creators
-let nextControlTypeID = 0;
+let nextControlTypeID = 11;
 export const addControlType = (name, type, endpoint, values) => {
   return {
     type: ADD_CONTROLTYPE,

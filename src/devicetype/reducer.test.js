@@ -1,39 +1,31 @@
-import deviceTypeReducer, { initialState } from './reducer';
+import deviceTypeReducer from './reducer';
 import * as actions from './actions';
+import { initialDeviceTypeState } from '../util/state';
 
 it('Creates correct initial devicetype state', () => {
   const action = { type: 'default' };
 
   expect(deviceTypeReducer(undefined, action))
-    .toEqual(initialState);
+    .toEqual(initialDeviceTypeState);
 });
 
 it('Adds a DeviceType', () => {
   const action = actions.addDeviceType('new deviceType', 'http://myapi.com');
+  const newState = deviceTypeReducer(initialDeviceTypeState, action);
 
-  expect(deviceTypeReducer(initialState, action))
+  expect(newState.deviceTypes.length).toEqual(5);
+  expect(newState.deviceTypesById[5])
     .toEqual({
-      deviceTypes: [0],
-      deviceTypesById: {
-        0: { name: 'new deviceType', apiUrl: 'http://myapi.com' }
-      }
+      name: 'new deviceType',
+      apiUrl: 'http://myapi.com'
     });
 });
 
 it('Removes a DeviceType', () => {
-  const oldState = {
-    deviceTypes: [0, 1],
-    deviceTypesById: {
-      0: { name: 'zero', apiUrl: 'http://zeroapi.com' },
-      1: { name: 'one', apiUrl: 'http://oneapi.com' }
-    }
-  };
-  const action = actions.removeDeviceType(0);
+  const action = actions.removeDeviceType(1);
+  const newState = deviceTypeReducer(initialDeviceTypeState, action);
 
-  expect(deviceTypeReducer(oldState, action))
-    .toEqual({
-      deviceTypes: [1],
-      deviceTypesById: { 1: { name: 'one', apiUrl: 'http://oneapi.com' }}
-    });
+  expect(newState.deviceTypes.length).toEqual(3);
+  expect(newState.deviceTypesById[1]).toEqual(undefined);
 });
 

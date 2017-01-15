@@ -23,18 +23,18 @@ const controlsById = (state = initialControlState, action) => {
   switch (action.type) {
     case ADD_CONTROL:
       return Object.assign({},
-        state.controlsById,
+        state,
         control(undefined, action)
       );
 
     case CHANGE_CONTROL:
       return Object.assign({},
-        state.controlsById,
-        control(state.controlsById[action.id], action)
+        state,
+        control(state[action.id], action)
       );
 
     case REMOVE_CONTROL:
-      const controlsById = Object.assign({}, state.controlsById);
+      const controlsById = Object.assign({}, state);
       delete controlsById[action.id];
 
       return controlsById;

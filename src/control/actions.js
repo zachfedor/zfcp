@@ -5,7 +5,7 @@ export const REMOVE_CONTROL = 'REMOVE_CONTROL';
 
 
 // Action Creators
-let nextControlID = 0;
+let nextControlID = 8;
 export const addControl = (name, controlType) => {
   return {
     type: ADD_CONTROL,

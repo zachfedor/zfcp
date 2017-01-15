@@ -3,7 +3,7 @@ import { addDeviceType, removeDeviceType } from './actions';
 it('Add deviceType action works', () => {
   expect(addDeviceType('test', 'http://myapi.com')).toEqual({
     type: 'ADD_DEVICETYPE',
-    id: 0,
+    id: 5,
     deviceType: {
       name: 'test',
       apiUrl: 'http://myapi.com'

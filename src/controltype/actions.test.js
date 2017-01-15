@@ -3,7 +3,7 @@ import { addControlType, removeControlType } from './actions';
 it('Add controlType action works for buttons', () => {
   expect(addControlType('test', 'BUTTON', '/endpoint')).toEqual({
     type: 'ADD_CONTROLTYPE',
-    id: 0,
+    id: 11,
     controlType: {
       name: 'test',
       type: 'BUTTON',
@@ -15,7 +15,7 @@ it('Add controlType action works for buttons', () => {
 it('Add controlType action works for sliders', () => {
   expect(addControlType('test', 'SLIDER', '/endpoint', [0, 100])).toEqual({
     type: 'ADD_CONTROLTYPE',
-    id: 1,
+    id: 12,
     controlType: {
       name: 'test',
       type: 'SLIDER',
@@ -28,7 +28,7 @@ it('Add controlType action works for sliders', () => {
 it('Add controlType action works for selects', () => {
   expect(addControlType('test', 'SELECT', '/endpoint', ['one', 'two', 'three'])).toEqual({
     type: 'ADD_CONTROLTYPE',
-    id: 2,
+    id: 13,
     controlType: {
       name: 'test',
       type: 'SELECT',

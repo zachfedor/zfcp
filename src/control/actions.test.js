@@ -3,7 +3,7 @@ import { addControl, changeControl, removeControl } from './actions';
 it('Add control action works', () => {
   expect(addControl('test', 0)).toEqual({
     type: 'ADD_CONTROL',
-    id: 0,
+    id: 8,
     control: {
       name: 'test',
       controlType: 0,

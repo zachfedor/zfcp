@@ -1,61 +1,54 @@
-import controlReducer, { initialState } from './reducer';
+import controlReducer from './reducer';
 import * as actions from './actions';
+import { initialControlState } from '../util/state';
+
 
 it('Creates correct initial control state', () => {
   const action = { type: 'default' };
 
   expect(controlReducer(undefined, action))
-    .toEqual(initialState);
+    .toEqual(initialControlState);
 });
 
 it('Adds a Button Control', () => {
   const action = actions.addControl('new control', 0);
+  const emptyState = {
+    0: { name: 'test', controlType: 0, value: 'old' }
+  };
 
-  expect(controlReducer(initialState, action))
+  expect(controlReducer(emptyState, action))
     .toEqual({
-      controls: [0],
-      controlsById: {
-        0: {
-          name: 'new control',
-          controlType: 0,
-          value: null
-        }
+      0: { name: 'test', controlType: 0, value: 'old' },
+      8: {
+        name: 'new control',
+        controlType: 0,
+        value: null
       }
     });
 });
 
 it('Changes a Control', () => {
   const oldState = {
-    controls: [0],
-    controlsById: {
-      0: { name: 'test', controlType: 0, value: 'old' }
-    }
+    0: { name: 'test', controlType: 0, value: 'old' }
   };
   const action = actions.changeControl(0, 'new');
 
   expect(controlReducer(oldState, action))
     .toEqual({
-      controls: [0],
-      controlsById: {
-        0: { name: 'test', controlType: 0, value: 'new' }
-      }
+      0: { name: 'test', controlType: 0, value: 'new' }
     });
 });
 
 it('Removes a Control', () => {
   const oldState = {
-    controls: [0, 1],
-    controlsById: {
-      0: { name: 'zero' },
-      1: { name: 'one' }
-    }
+    0: { name: 'zero' },
+    1: { name: 'one' }
   };
   const action = actions.removeControl(0);
 
   expect(controlReducer(oldState, action))
     .toEqual({
-      controls: [1],
-      controlsById: { 1: { name: 'one' }}
+      1: { name: 'one' }
     });
 });
 

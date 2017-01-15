@@ -4,7 +4,7 @@ export const REMOVE_DEVICETYPE = 'REMOVE_DEVICETYPE';
 
 
 // Action Creators
-let nextDeviceTypeID = 0;
+let nextDeviceTypeID = 5;
 export const addDeviceType = (name, apiUrl) => {
   return {
     type: ADD_DEVICETYPE,

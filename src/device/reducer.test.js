@@ -1,47 +1,36 @@
-import deviceReducer, { initialState } from './reducer';
+import deviceReducer from './reducer';
 import * as actions from './actions';
+import { initialDeviceState } from '../util/state';
 
 it('Creates correct initial device state', () => {
   const action = { type: 'default' };
+
   expect(deviceReducer(undefined, action))
-    .toEqual(initialState);
+    .toEqual(initialDeviceState);
 });
 
 it('Shows Device', () => {
-  const action = actions.showDevice(0);
-  expect(deviceReducer(initialState, action))
-    .toEqual({
-      showingDevice: 0,
-      ...initialState
-    });
+  const action = actions.showDevice(1);
+  const newState = deviceReducer(initialDeviceState, action);
+
+  expect(newState.showingDevice).toEqual(1);
 });
 
 it('Adds a Device', () => {
   const action = actions.addDevice('new device');
-  expect(deviceReducer(initialState, action))
+  const newState = deviceReducer(initialDeviceState, action);
+
+  expect(newState.devices.length).toEqual(4);
+  expect(newState.devicesById[4])
     .toEqual({
-      devices: [0],
-      devicesById: {
-        0: { name: 'new device' }
-      }
+      name: 'new device'
     });
 });
 
 it('Removes a Device', () => {
-  console.log('thing');
-  console.warn('thing');
-  console.error('thing');
-  const oldState = {
-    devices: [0, 1],
-    devicesById: {
-      0: { name: 'zero' },
-      1: { name: 'one' }
-    }
-  };
-  const action = actions.removeDevice(0);
-  expect(deviceReducer(oldState, action))
-    .toEqual({
-      devices: [1],
-      devicesById: { 1: { name: 'one' }}
-    });
+  const action = actions.removeDevice(1);
+  const newState = deviceReducer(initialDeviceState, action);
+
+  expect(newState.devices.length).toEqual(2);
+  expect(newState.devicesById[1]).toEqual(undefined);
 });
