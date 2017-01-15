@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
-import DeviceList from './DeviceList';
-import Device from './Device';
+import DeviceList from '../device/DeviceList';
+import Device from '../device/Device';
 import './DeviceDashboard.css';
 
 class DeviceDashboard extends Component {

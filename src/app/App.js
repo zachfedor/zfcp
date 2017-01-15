@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Router, Route, hashHistory } from 'react-router';
 import DeviceContainer from '../device/DeviceContainer';
-import AdminDashboard from '../device/AdminDashboard';
+import AdminDashboard from '../admin/AdminDashboard';
 import logo from './logo.svg';
 import './App.css';
 

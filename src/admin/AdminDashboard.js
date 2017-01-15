@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import DeviceList from './DeviceList';
+import DeviceContainer from '../device/DeviceContainer';
 import DeviceTypeList from '../devicetype/DeviceTypeList';
 import DeviceType from '../devicetype/DeviceType';
 import AddDeviceType from '../devicetype/AddDeviceType';
@@ -10,7 +10,7 @@ class AdminDashboard extends Component {
       <section className="AdminDashboard">
         <h2>Dashboard</h2>
 
-        <DeviceList devices={[]}/>
+        <DeviceContainer />
 
         <AddDeviceType />
         <DeviceTypeList />
