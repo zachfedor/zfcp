@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addDevice } from './actions';
+import './AddDevice.css';
 
 let AddDevice = ({ dispatch }) => {
   let input;
@@ -14,14 +15,14 @@ let AddDevice = ({ dispatch }) => {
   };
 
   return (
-    <div>
+    <section className="AddDevice">
       <form onSubmit={handleSubmit}>
         <input ref={node => {
           input = node;
         }} />
         <input type="submit" value="Add Device" />
       </form>
-    </div>
+    </section>
   )
 }
 
