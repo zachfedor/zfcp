@@ -6,12 +6,14 @@ export const SHOW_DEVICE   = 'SHOW_DEVICE';
 
 // Action Creators
 let nextDeviceID = 4;
-export const addDevice = (name) => {
+export const addDevice = (name, deviceType) => {
   return {
     type: ADD_DEVICE,
     id: nextDeviceID++,
     device: {
-      name
+      name,
+      deviceType,
+      controls: []
     }
   };
 };

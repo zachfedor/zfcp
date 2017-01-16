@@ -17,13 +17,15 @@ it('Shows Device', () => {
 });
 
 it('Adds a Device', () => {
-  const action = actions.addDevice('new device');
+  const action = actions.addDevice('new device', 0);
   const newState = deviceReducer(initialDeviceState, action);
 
   expect(newState.devices.length).toEqual(4);
   expect(newState.devicesById[4])
     .toEqual({
-      name: 'new device'
+      name: 'new device',
+      deviceType: 0,
+      controls: []
     });
 });
 
