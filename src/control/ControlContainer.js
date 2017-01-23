@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { changeControl } from './actions';
+import { changeControl } from '../device/actions';
 import Control from './Control';
 
 const mapStateToProps = (state) => {
