@@ -1,32 +1,54 @@
 import React, { Component } from 'react';
 import DeviceContainer from '../device/DeviceContainer';
-// import DeviceTypeList from '../devicetype/DeviceTypeList';
-// import DeviceType from '../devicetype/DeviceType';
+import DeviceTypeContainer from '../devicetype/DeviceTypeContainer';
 import AddDevice from '../device/AddDevice';
 import './AdminDashboard.css';
 
 class AdminDashboard extends Component {
+  state = {
+    tab: 'device'
+  };
+
   render() {
+    const deviceTab = (
+      <li
+        className={this.state.tab === 'device' ? 'tab active' : 'tab'}
+        onClick={() => { this.setState({ tab: 'device' })}}
+      >
+        Devices
+      </li>
+    );
+
+    const deviceTypeTab = (
+      <li
+        className={this.state.tab === 'devicetype' ? 'tab active' : 'tab'}
+        onClick={() => { this.setState({ tab: 'devicetype' })}}
+      >
+        Device Types
+      </li>
+    );
+
     return (
       <section className="AdminDashboard">
-        {/* TODO: add admin tab component
-          * show four tabs for d, dt, c, and ct
-          * active tab highlighted
-        */}
+
         <h2>Admin Dashboard</h2>
 
-        {/* TODO: add tab body component
-          * dependent on tab selection
-          * show add component
-          * show list component
-        */}
-        <AddDevice />
-        <DeviceContainer />
+        <ul className="tabs">
+          {deviceTab}
+          {deviceTypeTab}
+        </ul>
 
-        {/*
-        <DeviceTypeList />
-        <DeviceType />
-        */}
+        {this.state.tab === 'device' ? (
+          <div>
+            <DeviceContainer />
+            <AddDevice />
+          </div>
+        ) : (
+          <div>
+            <DeviceTypeContainer />
+          </div>
+        )}
+
       </section>
     );
   }

@@ -1,8 +1,9 @@
 // Actions
-export const ADD_DEVICETYPE    = 'ADD_DEVICETYPE';
-export const REMOVE_DEVICETYPE = 'REMOVE_DEVICETYPE';
+export const ADD_DEVICETYPE     = 'ADD_DEVICETYPE';
+export const REMOVE_DEVICETYPE  = 'REMOVE_DEVICETYPE';
 export const ADD_CONTROLTYPE    = 'ADD_CONTROLTYPE';
 export const REMOVE_CONTROLTYPE = 'REMOVE_CONTROLTYPE';
+export const SHOW_DEVICETYPE    = 'SHOW_DEVICETYPE ';
 
 
 // Action Creators
@@ -44,6 +45,13 @@ export const removeControlType = (deviceTypeId, controlTypeIndex) => {
     type: REMOVE_CONTROLTYPE,
     deviceTypeId,
     controlTypeIndex
+  };
+};
+
+export const showDeviceType = (id) => {
+  return {
+    type: SHOW_DEVICETYPE,
+    id
   };
 };
 

@@ -84,6 +84,13 @@ const deviceTypes = (state = initialDeviceTypeState, action) => {
       };
     }
 
+    case actions.SHOW_DEVICETYPE: {
+      return {
+        ...state,
+        showingDeviceType: action.id
+      };
+    }
+
     default:
       return state;
   }

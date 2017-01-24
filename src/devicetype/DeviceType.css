@@ -1,0 +1,12 @@
+.DeviceType a, .DeviceType a:visited {
+  color: #6070df;
+  text-decoration: none;
+}
+
+.DeviceType a:hover, .DeviceType a:active {
+  color: #ff5470;
+}
+
+.DeviceType h3 {
+  color: #ccc;
+}

@@ -114,7 +114,8 @@ export const initialDeviceTypeState = {
         endpoint: '/power'
       }]
     }
-  }
+  },
+  showingDeviceType: null
 };
 
 const initialState = {

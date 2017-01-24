@@ -1,3 +1,25 @@
 .AdminDashboard > h2 {
-  margin: 5vw;
+  margin: 5vw 5vw 0;
+}
+
+.tabs {
+  margin: 1vw 5vw 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.tab {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 2px solid #ccc;
+}
+
+.tab:hover {
+  border-color: #ff5470;
+}
+
+.tab.active {
+  border-color: #222;
 }
