@@ -4,14 +4,14 @@ import { changeControl } from '../device/actions';
 import Control from './Control';
 
 const mapStateToProps = (state) => {
-  const id = state.deviceReducer.showingDevice;
-  const device = state.deviceReducer.devicesById[id];
-  const controls = device.controls.map(id => {
-    const control = state.controlsById[id];
+  const id = state.devices.showingDevice;
+  const device = state.devices.byId[id];
+  const deviceType = state.deviceTypes.byId[device.deviceType];
+  const controls = device.controls.map((control, index) => {
     return {
-      id,
       ...control,
-      controlType: state.controlTypesById[control.controlType]
+      id: index,
+      controlType: deviceType.controlTypes[index]
     };
   });
 
@@ -30,7 +30,6 @@ const mapDispatchToProps = (dispatch) => {
 
 const ControlList = (props) => {
   const controlElements = props.controls.map(control => {
-    console.log('control', control);
     return (
       <Control
         key={control.id}

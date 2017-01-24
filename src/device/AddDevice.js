@@ -5,32 +5,32 @@ import './AddDevice.css';
 
 const mapStateToProps = (state) => {
   return {
-    deviceTypes: state.deviceTypeReducer.deviceTypes.map(id => {
-      return {
-        id,
-        name: state.deviceTypeReducer.deviceTypesById[id].name
-      };
-    })
-  }
+    deviceTypes: state.deviceTypes
+  };
 };
 
 let AddDevice = ({ deviceTypes, dispatch }) => {
-  let deviceName, deviceType;
+  let deviceNameNode, deviceTypeNode;
   let handleSubmit = (e) => {
     e.preventDefault();
-    if(!deviceName.value.trim()) {
+    if(!deviceNameNode.value.trim()) {
       return;
     }
 
-    dispatch(addDevice(deviceName.value, deviceType.value));
+    const deviceTypeId = deviceTypeNode.value;
+    const controlTypes = deviceTypes.byId[deviceTypeId].controlTypes;
 
-    deviceName.value = '';
-    deviceType.value = '';
+    dispatch(addDevice(deviceNameNode.value, deviceTypeId, controlTypes));
+
+    deviceNameNode.value = '';
+    deviceTypeNode.value = '';
   };
 
-  const options = deviceTypes.map(dT => {
+  const options = deviceTypes.all.map(id => {
+    const name = deviceTypes.byId[id].name;
+
     return (
-      <option key={dT.id} value={dT.id}>{dT.name}</option>
+      <option key={id} value={id}>{name}</option>
     );
   });
 
@@ -42,14 +42,14 @@ let AddDevice = ({ deviceTypes, dispatch }) => {
         <label>
           Name:
           <input ref={node => {
-            deviceName = node;
+            deviceNameNode = node;
           }} />
         </label>
 
         <label>
           Device Type:
           <select ref={node => {
-            deviceType = node;
+            deviceTypeNode = node;
           }} defaultValue="">
             <option value="" disabled>Select one</option>
             {options}

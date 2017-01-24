@@ -8,14 +8,21 @@ export const RENAME_CONTROL = 'RENAME_CONTROL';
 
 // Action Creators
 let nextDeviceID = 4;
-export const addDevice = (name, deviceType) => {
+export const addDevice = (name, deviceType, controlTypes) => {
+  const controls = controlTypes.map(controlType => {
+    return {
+      name: controlType.name,
+      value: controlType.values[0]
+    };
+  });
+
   return {
     type: ADD_DEVICE,
     id: nextDeviceID++,
     device: {
       name,
       deviceType,
-      controls: []
+      controls
     }
   };
 };
@@ -31,19 +38,6 @@ export const showDevice = (id) => {
   return {
     type: SHOW_DEVICE,
     id
-  };
-};
-
-let nextControlID = 8;
-export const addControl = (name, controlType) => {
-  return {
-    type: ADD_CONTROL,
-    id: nextControlID++,
-    control: {
-      name,
-      controlType,
-      value: null
-    }
   };
 };
 

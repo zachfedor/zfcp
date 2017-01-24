@@ -1,10 +1,10 @@
 import { combineReducers } from 'redux';
-import deviceReducer from './device/reducer';
-import deviceTypeReducer from './devicetype/reducer';
+import devices from './device/reducer';
+import deviceTypes from './devicetype/reducer';
 
 const rootReducer = combineReducers({
-  deviceReducer,
-  deviceTypeReducer
+  devices,
+  deviceTypes
 });
 
 export default rootReducer;

@@ -30,39 +30,39 @@ const deviceType = (state = {}, action) => {
   }
 };
 
-const deviceTypeReducer = (state = initialDeviceTypeState, action) => {
+const deviceTypes = (state = initialDeviceTypeState, action) => {
   switch (action.type) {
     case actions.ADD_DEVICETYPE: {
       return {
-        deviceTypes: [ ...state.deviceTypes, action.id ],
-        deviceTypesById: Object.assign({},
-          state.deviceTypesById,
+        all: [ ...state.all, action.id ],
+        byId: Object.assign({},
+          state.byId,
           { [action.id]: deviceType(undefined, action) }
         )
       };
     }
 
     case actions.REMOVE_DEVICETYPE: {
-      const deviceTypesById = Object.assign({}, state.deviceTypesById);
-      delete deviceTypesById[action.id];
+      const byId = Object.assign({}, state.byId);
+      delete byId[action.id];
 
       return {
-        deviceTypes: state.deviceTypes.filter(i => i !== action.id),
-        deviceTypesById
+        all: state.all.filter(i => i !== action.id),
+        byId
       };
     }
 
     case actions.ADD_CONTROLTYPE: {
       const newDeviceType = deviceType(
-        state.deviceTypesById[action.deviceTypeId],
+        state.byId[action.deviceTypeId],
         action
       );
 
       return {
         ...state,
-        deviceTypesById: Object.assign(
+        byId: Object.assign(
           {},
-          state.deviceTypesById,
+          state.byId,
           { [action.deviceTypeId]: newDeviceType }
         )
       };
@@ -70,15 +70,15 @@ const deviceTypeReducer = (state = initialDeviceTypeState, action) => {
 
     case actions.REMOVE_CONTROLTYPE: {
       const newDeviceType = deviceType(
-        state.deviceTypesById[action.deviceTypeId],
+        state.byId[action.deviceTypeId],
         action
       );
 
       return {
         ...state,
-        deviceTypesById: Object.assign(
+        byId: Object.assign(
           {},
-          state.deviceTypesById,
+          state.byId,
           { [action.deviceTypeId]: newDeviceType }
         )
       };
@@ -89,4 +89,4 @@ const deviceTypeReducer = (state = initialDeviceTypeState, action) => {
   }
 }
 
-export default deviceTypeReducer;
+export default deviceTypes;

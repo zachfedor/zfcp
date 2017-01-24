@@ -17,15 +17,24 @@ it('Shows Device', () => {
 });
 
 it('Adds a Device', () => {
-  const action = actions.addDevice('new device', 0);
+  const controlTypes = [{
+    name: 'button',
+    inputType: 'BUTTON',
+    values: [false, true],
+    endpoint: '/button'
+  }];
+  const action = actions.addDevice('new device', 0, controlTypes);
   const newState = deviceReducer(initialDeviceState, action);
 
-  expect(newState.devices.length).toEqual(4);
-  expect(newState.devicesById[4])
+  expect(newState.all.length).toEqual(4);
+  expect(newState.byId[4])
     .toEqual({
       name: 'new device',
       deviceType: 0,
-      controls: []
+      controls: [{
+        name: 'button',
+        value: false
+      }]
     });
 });
 
@@ -33,6 +42,6 @@ it('Removes a Device', () => {
   const action = actions.removeDevice(1);
   const newState = deviceReducer(initialDeviceState, action);
 
-  expect(newState.devices.length).toEqual(2);
-  expect(newState.devicesById[1]).toEqual(undefined);
+  expect(newState.all.length).toEqual(2);
+  expect(newState.byId[1]).toEqual(undefined);
 });

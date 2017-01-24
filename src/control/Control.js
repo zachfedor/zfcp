@@ -10,7 +10,7 @@ class Control extends Component {
     // TODO: control the value and handle change
 
     let input;
-    switch (controlType.interface) {
+    switch (controlType.inputType) {
       case 'SELECT':
         // make select element
         // iterate over controltype values as options
@@ -61,7 +61,7 @@ Control.propTypes = {
   name: PropTypes.string,
   controlType: PropTypes.shape({
     name: PropTypes.string.isRequired,
-    interface: PropTypes.oneOf(['BUTTON', 'SLIDER', 'SELECT']).isRequired,
+    inputType: PropTypes.oneOf(['BUTTON', 'SLIDER', 'SELECT']).isRequired,
     values: PropTypes.array,
     endpoint: PropTypes.string.isRequired,
   }),

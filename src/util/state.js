@@ -1,6 +1,6 @@
 export const initialDeviceState = {
-  devices: [1, 2, 3],
-  devicesById: {
+  all: [1, 2, 3],
+  byId: {
     1: {
       name: 'Bedroom Apple TV',
       deviceType: 3,
@@ -20,7 +20,7 @@ export const initialDeviceState = {
       deviceType: 1,
       controls: [{
         name: 'Livingroom Audio Power',
-        value: true
+        value: false
       }, {
         name: 'Livingroom Audio Volume',
         value: 33
@@ -34,7 +34,7 @@ export const initialDeviceState = {
       deviceType: 4,
       controls: [{
         name: 'Livingroom Lights',
-        value: true
+        value: false
       }]
     }
   },
@@ -42,14 +42,15 @@ export const initialDeviceState = {
 };
 
 export const initialDeviceTypeState = {
-  deviceTypes: [1, 2, 3, 4],
-  deviceTypesById: {
+  all: [1, 2, 3, 4],
+  byId: {
     1: {
       name: 'Samsung Audio',
       apiRoot: 'https://samsungapi.com/audio',
       controlTypes: [{
         name: 'Power',
         inputType: 'BUTTON',
+        values: [false, true],
         endpoint: '/power'
       }, {
         name: 'Volume',
@@ -69,6 +70,7 @@ export const initialDeviceTypeState = {
       controlTypes: [{
         name: 'Power',
         inputType: 'BUTTON',
+        values: [false, true],
         endpoint: '/power'
       }, {
         name: 'Volume',
@@ -88,6 +90,7 @@ export const initialDeviceTypeState = {
       controlTypes: [{
         name: 'Power',
         inputType: 'BUTTON',
+        values: [false, true],
         endpoint: '/power'
       }, {
         name: 'Volume',
@@ -107,6 +110,7 @@ export const initialDeviceTypeState = {
       controlTypes: [{
         name: 'Power',
         inputType: 'BUTTON',
+        values: [false, true],
         endpoint: '/power'
       }]
     }
@@ -114,8 +118,8 @@ export const initialDeviceTypeState = {
 };
 
 const initialState = {
-  deviceTypeReducer: initialDeviceTypeState,
-  deviceReducer: initialDeviceState
+  deviceTypes: initialDeviceTypeState,
+  devices: initialDeviceState
 };
 
 export default initialState;
